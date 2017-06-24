@@ -7,9 +7,19 @@
 
     </head>
     <body>
+         @section('menu')
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="{{'home'}}">Home</a></li>
+                    <li class="active"><a href="{{'login'}}">Login</a></li>
+                </ul>
+            </div>
+            @endsection('menu')
         <div class="container">
             <!-- Trigger the modal with a button -->
-            <div class="btn-group-vertical">
+            @section('nab')
+
+            <div class="btn-group-vertical ">
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveUser">Agregar usuario</button>
                 <p></p>
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveProfesor">Agregar Profesor </button>
@@ -17,14 +27,17 @@
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveAlumno">Agregar Alumno</button>
                 <p></p>
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveClase">Agregar Clases</button>
+                
             </div>
+
+            @endsection('nab')
             <!-- Modal -->
             <div class="modal fade" id="SaveUser" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
-                    
-                   {!! Form::open(['route' => 'usuario.store', 'method'=>'post','validate']) !!}
+
+                    {!! Form::open(['route' => 'usuario.store', 'method'=>'post','validate']) !!}
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -51,7 +64,7 @@
                             <input type="submit" value="Guardar" />
                         </div>
                     </div>
-                   {!! Form::close() !!}
+                    {!! Form::close() !!}
 
                 </div>
             </div>
