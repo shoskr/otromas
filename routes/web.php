@@ -12,20 +12,31 @@
 */
 
 Route::get('/', function () {
-    return view('Home');
+    return view('welcome');
 });
 Route::get('home', function () {
-    return view('Home');
+    return view('welcome');
 });
 Route::get('login', function () {
-    return view('Login');
+    return view('login');
 });
-Route::get('UTP', function () {
+Route::get('utp', function () {
     return view('formUTP');
 });
+
 
 Route::resource('alumno','AlumnoControllet');
 Route::resource('alumno_usuario','Alumno_usuarioController');
 Route::resource('profesor','ProfesorController');
 Route::resource('tutoria','TutoriaController');
 Route::resource('usuario','UsuarioController');
+Route::resource('log','loginController');
+
+Route::resource('usu', 'UsuarioController');
+Route::resource('us', 'UsuarioController');
+
+
+
+ 
+
+

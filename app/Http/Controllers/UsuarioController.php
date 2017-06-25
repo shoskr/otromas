@@ -5,15 +5,14 @@ namespace colegio\Http\Controllers;
 use Illuminate\Http\Request;
 use colegio\Usuario as Usuario;
 
-class UsuarioController extends Controller
-{
+class UsuarioController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request) {
         
     }
 
@@ -22,8 +21,7 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         return view('UTP');
     }
 
@@ -33,14 +31,17 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $usuario =new Usuario;
-        $usuario->username=$request->username;
-        $usuario->password= password_hash($request->password, PASSWORD_DEFAULT);
-        $usuario->perfil=$request->perfil;        
+    public function store(Request $request) {
+        $usuario = new Usuario;
+        $usuario->username = $request->username;
+        $usuario->password = password_hash($request->password, PASSWORD_DEFAULT);
+        $usuario->perfil = $request->perfil;
         $usuario->save();
         return redirect()->back();
+    }
+
+    public function entrar(Request $request) {
+        
     }
 
     /**
@@ -49,9 +50,9 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id) {
+
+//
     }
 
     /**
@@ -60,9 +61,8 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+//
     }
 
     /**
@@ -72,9 +72,8 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+//
     }
 
     /**
@@ -83,8 +82,12 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+//
     }
+
+    public function log(Request $request) {
+        
+    }
+
 }
