@@ -1,24 +1,33 @@
 @extends('index')
 @section('content')
+
+
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
 
     </head>
-    <body>
-         @section('menu')
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="{{'home'}}">Home</a></li>
-                    <li class="active"><a href="{{'login'}}">Login</a></li>
-                </ul>
-            </div>
-            @endsection('menu')
+    <body> 
+        @section('menu')
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="{{'home'}}">Home</a></li>
+                <li class="active"><a href="{{'login'}}">Login</a></li>                
+            </ul>
+        </div>
+        @endsection('menu')
+
+
         <div class="container">
             <!-- Trigger the modal with a button -->
             @section('nab')
-
+            <?php
+            $_SESSION['user'];
+            if (isset($_SESSION['user'])) {
+                echo '<font size="5" color="white" ><b> Usuario:  ' . $_SESSION['user'] . '</b></font>';
+            }
+            ?>
             <div class="btn-group-vertical ">
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveUser">Agregar usuario</button>
                 <p></p>
@@ -27,7 +36,7 @@
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveAlumno">Agregar Alumno</button>
                 <p></p>
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#SaveClase">Agregar Clases</button>
-                
+
             </div>
 
             @endsection('nab')
@@ -37,7 +46,7 @@
 
                     <!-- Modal content-->
 
-                    {!! Form::open(['route' => 'usuario.store', 'method'=>'post','validate']) !!}
+                    {!! Form::open(['route' => 'usu.store', 'method'=>'post','validate']) !!}
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -125,7 +134,7 @@
             <div class="modal fade" id="SaveClase" role="dialog">
                 <div class="modal-dialog">
 
-                    Modal content
+                    <!--Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
