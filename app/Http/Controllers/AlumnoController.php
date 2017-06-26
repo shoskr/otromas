@@ -5,16 +5,17 @@
 namespace colegio\Http\Controllers;
 
 use Illuminate\Http\Request;
+use colegio\Alumno as alumno;
 
-class AlumnoController extends Controller
-{
+
+class AlumnoController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
@@ -23,8 +24,7 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -34,9 +34,48 @@ class AlumnoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+
+        function agregar_dv($_rol) {
+            while ($_rol[0] == "0") {
+                $_rol = substr($_rol, 1);
+            }
+            $factor = 2;
+            $suma = 0;
+            for ($i = strlen($_rol) - 1; $i >= 0; $i--) {
+                $suma += $factor * $_rol[$i];
+                $factor = $factor % 7 == 0 ? 2 : $factor + 1;
+            }
+            $dv = 11 - $suma % 11;
+            /* Por alguna razón me daba que 11 % 11 = 11. Esto lo resuelve. */
+            $dv = $dv == 11 ? 0 : ($dv == 10 ? "K" : $dv);
+            return  $dv;
+        }
+
+        $alumno = new alumno;
+        $alumno->rut = $request->rut;
+        
+        $al = agregar_dv($request->rut);
+        $dv = $request->dv;
+        $alumno->nombre_alumno = $request->nombre;
+        $alumno->fecha_nacimiento = $request->fecha;
+        $alumno->curso = $request->curso;
+        $alumno->direccion = md5($request->direccion);
+        $alumno->telefono = $request->telefono;
+        $alumno->estado = 1;
+
+        if($al == $dv){
+           $alumno->save();
+            session_start();
+            $_SESSION['user']= $request->rut;
+            return \View::make('alumUs');
+            
+        }else{
+            echo 'no Rut'. $al;
+        }
+        
+        
+        //return \View::make('alumUs', compact('alumno'));
     }
 
     /**
@@ -45,8 +84,7 @@ class AlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -56,8 +94,7 @@ class AlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -68,8 +105,7 @@ class AlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -79,8 +115,8 @@ class AlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }
