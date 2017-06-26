@@ -89,9 +89,8 @@ class AlumnoController extends Controller {
     public function show(Request $request) {
 
         $alumno = Alumno::where('rut', '=', $request->rut)->first();
-
         session_start();
-        return \View::make('listaAlumno', compact('alumno'));
+        return \View::make('listaAlumno', $alumno);
     }
 
     /**
