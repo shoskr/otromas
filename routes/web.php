@@ -21,16 +21,30 @@ Route::get('login', function () {
     return view('login');
 });
 Route::get('utp', function () {
+    session_start();
     return view('formUTP');
+});
+Route::get('alumUs', function () {
+    return view('alumUs');
+});
+Route::get('ConsAlum', function () {
+    return view('consultarAlumno');
+});
+Route::get('listaAlumno', function () {
+    session_start();
+    return view('listaAlumno');
 });
 
 
-Route::resource('alumno','AlumnoControllet');
+Route::resource('alumno','AlumnoController');
+Route::get('alum','AlumnoController@listAll');
+Route::get('alumno/show/{id}',['as'=>'alumno/show','uses'=>'AlumnoController@show']);
 Route::resource('alumno_usuario','Alumno_usuarioController');
 Route::resource('profesor','ProfesorController');
 Route::resource('tutoria','TutoriaController');
 Route::resource('usuario','UsuarioController');
 Route::resource('log','loginController');
+Route::post('alu', 'AlumnoController@show');
 
 Route::resource('usu', 'UsuarioController');
 Route::resource('us', 'UsuarioController');
