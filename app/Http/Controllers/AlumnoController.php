@@ -5,8 +5,7 @@
 namespace colegio\Http\Controllers;
 
 use Illuminate\Http\Request;
-use colegio\Alumno as alumno;
-
+use colegio\Alumno as Alumno;
 
 class AlumnoController extends Controller {
 
@@ -49,12 +48,12 @@ class AlumnoController extends Controller {
             $dv = 11 - $suma % 11;
             /* Por alguna razón me daba que 11 % 11 = 11. Esto lo resuelve. */
             $dv = $dv == 11 ? 0 : ($dv == 10 ? "K" : $dv);
-            return  $dv;
+            return $dv;
         }
 
-        $alumno = new alumno;
+        $alumno = new Alumno;
         $alumno->rut = $request->rut;
-        
+
         $al = agregar_dv($request->rut);
         $dv = $request->dv;
         $alumno->nombre_alumno = $request->nombre;
@@ -64,18 +63,21 @@ class AlumnoController extends Controller {
         $alumno->telefono = $request->telefono;
         $alumno->estado = 1;
 
-        if($al == $dv){
-           $alumno->save();
+        if ($al == $dv) {
+            $alumno->save();
             session_start();
-            $_SESSION['user']= $request->rut;
+            $_SESSION['user'] = $request->rut;
             return \View::make('alumUs');
-            
-        }else{
-            echo 'no Rut'. $al;
+        } else {
+            session_start();
+            return \View::make('formUTP');
         }
-        
-        
-        //return \View::make('alumUs', compact('alumno'));
+    }
+
+    public function listAll() {
+        $alumno = Alumno::all();
+        session_start();
+        return \View::make('listaAlumno', compact('alumno'));
     }
 
     /**
@@ -84,8 +86,12 @@ class AlumnoController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        //
+    public function show(Request $request) {
+
+        $alumno = Alumno::where('rut', '=', $request->rut)->first();
+
+        session_start();
+        return \View::make('listaAlumno', compact('alumno'));
     }
 
     /**

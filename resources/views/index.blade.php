@@ -27,15 +27,7 @@
 
 
 
-        <style>
-            .Pagnav{
-
-                width: 200px;
-                height: 100%;
-                margin: 0px 0px;
-               
-            }
-        </style>
+        
     </head>
 
     <!--[if lt IE 8]>

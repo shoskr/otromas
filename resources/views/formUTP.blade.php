@@ -52,8 +52,8 @@
                     <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Alumnos<span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a data-toggle="modal" data-target="#SaveAlumno">Agregar Alumnos</a></li>
-                        <li><a data-toggle="modal" data-target="#">Listar Alumnos</a></li>
-                        <li><a data-toggle="modal" data-target="#">Consultar Alumnos</a></li>
+                        <li><a data-toggle="modal" href="{{url('alum')}}">Listar Alumnos</a></li>
+                        <li><a data-toggle="modal" data-target="#BuscarAlumno">Consultar Alumnos</a></li>
                         <li><a data-toggle="modal" data-target="#">Eliminar Alumnos</a></li>
                     </ul>
                 </div>
@@ -61,6 +61,10 @@
         </div>
 
         @endsection('nab')
+        @yield('utp')
+
+
+
         <!-- Modal -->
         <div class="modal fade" id="SaveUser" role="dialog">
             <div class="modal-dialog">
@@ -83,7 +87,6 @@
                         <p>Tipo De Usuario : 
                             <select name="perfil">
                                 <option>Seleccionar Tipo</option>
-                                <option value="1">Alumno</option>
                                 <option value="2">Profesor</option>
                                 <option value="3">UTP</option>
                                 <option value="4">Director</option>
@@ -136,21 +139,64 @@
 
                 <div class="modal-content">
                     <div class="modal-header">
+                        {!! Form::open(['route' => 'alumno.store', 'method'=>'post','validate']) !!}
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title">Ingresar Alumno</h4>
                     </div>
-                    <div class="modal-body">
-                        <p>Some text in the modal.</p>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Rut                : <input type="number" name="rut" value="" placeholder="Ingresar rut sin puntos" required>-<input required type="text" name="dv" value="" size="1" placeholder="DV"/> </p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Nombre Completo    : <input type="text" name="nombre" value="" placeholder="Ingresar Nombre" required/></p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Fecha Nacimiento   : <input type="date" name="fecha" value="" max=""required size="7"/></p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Curos              : <input type="text" name="curso" value="" placeholder="Ingresar curso"required /></p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Direccion          : <input type="text" name="direccion" value="" placeholder="Ingresar Direccion" required/></p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Telefono           : <input type="text" name="telefono" value="" placeholder="Ingresar telefono"required /></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Guardar" />
                     </div>
+                    {!!form::close() !!}
+
                 </div>
 
             </div>
         </div>
 
+        <!--Alumnos-->
 
+        <div class="modal fade" id="BuscarAlumno" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                      {!!   Form::open(['url' => 'alu']);!!}
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Buscar Alumno</h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Rut                : <input type="number" name="rut" value="" placeholder="Ingresar rut sin puntos ni digito verificado" required> </p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Consultar" />
+
+                    </div>
+                    {!! Form::close() !!}
+
+                </div>
+
+            </div>
+        </div>
 
     </div>
 

@@ -18,7 +18,7 @@ class CreateAlumnoTable extends Migration {
 			$table->string('nombre_alumno', 100);
 			$table->date('fecha_nacimiento');
 			$table->string('curso', 45);
-			$table->string('direccionl', 100);
+			$table->string('direccion', 200);
 			$table->integer('telefono');
 			$table->boolean('estado');
                         $table->timestamps();
