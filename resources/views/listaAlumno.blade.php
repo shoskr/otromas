@@ -24,12 +24,14 @@
                             <td>Telefono</td>
                         </tr>
                         @foreach($alumno as $alum)
+                        <tr>
                         <td>{{$alum->rut}}</td>
                         <td>{{$alum->nombre_alumno}}</td>
                         <td>{{$alum->fecha_nacimiento}}</td>
                         <td>{{$alum->curso }}</td>
          <!--               <td>{{$alum->direccion}}</td>-->
                         <td>{{$alum->telefono}}</td>
+                        </tr>
                         @endforeach
                     </table>
                     <div class="panel" style="text-align: right">                        

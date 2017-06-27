@@ -38,6 +38,7 @@ Route::get('listaAlumno', function () {
 
 Route::resource('alumno','AlumnoController');
 Route::get('alum','AlumnoController@listAll');
+Route::get('alum2','AlumnoController@listAll2');
 Route::get('alumno/show/{id}',['as'=>'alumno/show','uses'=>'AlumnoController@show']);
 Route::resource('alumno_usuario','Alumno_usuarioController');
 Route::resource('profesor','ProfesorController');
@@ -48,6 +49,8 @@ Route::post('alu', 'AlumnoController@show');
 
 Route::resource('usu', 'UsuarioController');
 Route::resource('us', 'UsuarioController');
+
+Route::get('alumno/destroy/{id}',['as'=>'alumno/destroy','uses'=>'AlumnoController@destroy']);
 
 
 

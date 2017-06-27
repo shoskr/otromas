@@ -54,7 +54,7 @@
                         <li><a data-toggle="modal" data-target="#SaveAlumno">Agregar Alumnos</a></li>
                         <li><a data-toggle="modal" href="{{url('alum')}}">Listar Alumnos</a></li>
                         <li><a data-toggle="modal" data-target="#BuscarAlumno">Consultar Alumnos</a></li>
-                        <li><a data-toggle="modal" data-target="#">Eliminar Alumnos</a></li>
+                        <li><a data-toggle="modal" href="{{url('alum2')}}">Eliminar Alumnos</a></li>
                     </ul>
                 </div>
             </div>
