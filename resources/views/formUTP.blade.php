@@ -2,6 +2,7 @@
 @section('content')
 
 
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -18,9 +19,12 @@
         </div>
         @endsection('menu')
 
-  
+        @if(Session::has('flash_message'))
+        {{Session::get('flash_message')}}
+        @endif
 
-        
+
+
 
         <div class="container">
             <!-- Trigger the modal with a button -->
@@ -203,9 +207,9 @@
 
             </div>
         </div>
-        
-        
-         <!--Usuario Buscar-->
+
+
+        <!--Usuario Buscar-->
 
         <div class="modal fade" id="BuscarUsuario" role="dialog">
             <div class="modal-dialog">
@@ -231,11 +235,11 @@
 
             </div>
         </div>
-        
+
 
     </div>
     @endsection('nab')
-    
+
     @yield('form')
 
 </body>

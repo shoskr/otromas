@@ -31,7 +31,7 @@
                 echo '<font size="5" color="white" ><b> Usuario:  ' . $_SESSION['user'] . '</b></font>';
             }
             if (isset($_SESSION['id'])) {
-                $id=$_SESSION['id'];
+                $id = $_SESSION['id'];
             }
             
             ?>

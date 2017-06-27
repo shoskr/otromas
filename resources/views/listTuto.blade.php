@@ -1,5 +1,5 @@
-@extends('index')
-@section('content')
+@extends('formSecretaria')
+@section('form1')
 <html>
     <head>
         <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <body>
         
         <div class="row" style="border: #0000cc; margin: 30px 40px" >      
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-lg-10 ">
                 <div class="panel">
                     <div class="panel alert-danger">
 
@@ -53,4 +53,4 @@
         </div>
     </body>
 </html>
-@endsection('content
+@endsection('form1')

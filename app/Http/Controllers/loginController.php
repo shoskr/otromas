@@ -42,7 +42,7 @@ class loginController extends Controller {
                     return \View::make('formSecretaria');
                 case 3:
                     session_start();
-                    Alert::info('Bienbenido','info' );
+                    
                     $_SESSION['user'] = $user;
                     return \View::make('formUTP', compact($_SESSION['user']));
                 case 4:
