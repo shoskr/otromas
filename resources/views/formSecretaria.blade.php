@@ -51,10 +51,9 @@
                 <div class="dropdown">
                     <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Tutorias<span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a data-toggle="modal" data-target="#SaveTutorias">Agendar Tutorias</a></li>
-                        <li><a data-toggle="modal" data-target="#">Confirmar Tutorias</a></li>
-                        <li><a data-toggle="modal" data-target="#">Confirmar Tutorias</a></li>
-                        <li><a data-toggle="modal" data-target="#">Confirmar Tutorias</a></li>
+                        <li><a data-toggle="modal" href="{{url('Tuto')}}">Agendar Tutorias</a></li>
+                        <li><a data-toggle="modal" href="{{url('tut')}}">Manipular Tutorias</a></li>
+                        
                        
                     </ul>
                 </div>
@@ -119,7 +118,7 @@
     </div>
     @endsection('nab')
     
-    @yield('form')
+    @yield('form1')
 
 </body>
 </html>

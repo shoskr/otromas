@@ -1,4 +1,4 @@
-@extends('formSecretaria')
+@extends('index')
 @section('form')
 
 <html>

@@ -5,18 +5,20 @@ namespace colegio\Http\Controllers;
 use Illuminate\Http\Request;
 use colegio\Alumno as Alumno;
 use colegio\Profesor as Profesor;
-class TutoriaController extends Controller
-{
+use colegio\Tutoria as Tutoria;
+
+class TutoriaController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-         $profesor = Profesor::all();
-         $Alumno = Alumno::all();
-        return view('formSecretaria', compact('profesor'), compact(Alumno));
+    public function index() {
+        $Profesor = Profesor::all();
+        $Alumno = Alumno::all();
+        session_start();
+        return view('agregarTuto', compact('Profesor'), compact('Alumno'));
     }
 
     /**
@@ -24,8 +26,7 @@ class TutoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -35,9 +36,22 @@ class TutoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $tutoria = new Tutoria;
+
+        $tutoria->fecha_tutoria = $request->fecha;
+        $tutoria->estado = 'Agendada';
+        $tutoria->Alumno_rut = $request->alumno;
+        $tutoria->Profesor_rut = $request->profesor;
+        $tutoria->save();
+        session_start();
+        return \View::make('formSecretaria');
+    }
+
+    public function listAll() {
+        $Tuto = Tutoria::all();
+        session_start();
+        return \View::make('listTuto', compact('Tuto'));
     }
 
     /**
@@ -46,8 +60,7 @@ class TutoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -57,8 +70,7 @@ class TutoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -69,8 +81,17 @@ class TutoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
+        
+        $Tutoria = Tutoria::where('id_tutoria',$id);
+        $Tutoria->estado = $request->est;
+        $Tutoria->update();
+        session_start();
+        return redirect()->back();
+        
+        
+        
+        
         //
     }
 
@@ -80,8 +101,8 @@ class TutoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }

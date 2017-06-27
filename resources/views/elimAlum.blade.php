@@ -1,4 +1,4 @@
-@extends('formUTP')
+@extends('index')
 
 @section('content')
 <html>
@@ -38,7 +38,7 @@
                         @endforeach
                     </table>
                     <div class="panel" style="text-align: right">                        
-                        <a style="text-align: right"href="{{'utp'}}">volver</a>
+                        <a style="text-align: right"href="{{URL::previous()}}">volver</a>
                     </div>
                 </div>
             </div>

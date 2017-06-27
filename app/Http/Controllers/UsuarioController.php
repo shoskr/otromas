@@ -71,7 +71,8 @@ class UsuarioController extends Controller {
         session_start();
         return \View::make('listUs', compact('Usua'));
     }
-     public function listAll2() {
+
+    public function listAll2() {
         $Usua = Usuario::all();
         session_start();
         return \View::make('elimUs', compact('Usua'));
@@ -113,8 +114,9 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $Usu = Usuario::find($id);
-        $Usu->delete();
+        
+        $alumno = Usuario::where('id_usuario', $id);
+        $alumno->delete();
         session_start();
         return redirect()->back();
     }
