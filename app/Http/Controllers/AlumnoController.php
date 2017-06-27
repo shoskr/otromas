@@ -7,6 +7,7 @@ namespace colegio\Http\Controllers;
 use Illuminate\Http\Request;
 use colegio\Alumno as Alumno;
 
+
 class AlumnoController extends Controller {
 
     /**
@@ -79,6 +80,11 @@ class AlumnoController extends Controller {
         session_start();
         return \View::make('listaAlumno', compact('alumno'));
     }
+    public function listAll2() {
+        $alumno = Alumno::all()->where('estado', '=', '1');
+        session_start();
+        return \View::make('elimAlum', compact('alumno'));
+    }
 
     /**
      * Display the specified resource.
@@ -122,8 +128,10 @@ class AlumnoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $alumno = Alumno::find($id);
+        
+        $alumno = Alumno::where('rut',$id); 
         $alumno->delete();
+        session_start();
         return redirect()->back();
     }
 
