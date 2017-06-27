@@ -60,19 +60,19 @@
             </div>
         </div>
 
-        @endsection('nab')
-        @yield('utp')
+
+
 
 
 
         <!-- Modal -->
-        <div class="modal fade" id="SaveUser" role="dialog">
+        <div class="modal fade" id="SaveUser" role="dialog"  >
             <div class="modal-dialog">
 
                 <!-- Modal content-->
 
                 {!! Form::open(['route' => 'usu.store', 'method'=>'post','validate']) !!}
-                <div class="modal-content">
+                <div class="modal-content" style="margin: 200px 100px;" >
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title" style="text-align: center">Agregar Usuario</h4>
@@ -108,7 +108,7 @@
             <div class="modal-dialog">
 
                 <!--  Modal content-->
-                <div class="modal-content">
+                <div class="modal-content" style="margin: 200px 100px;">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modal Header</h4>
@@ -137,7 +137,7 @@
 
                 <!-- Modal content-->
 
-                <div class="modal-content">
+                <div class="modal-content" style="margin: 200px 100px;">
                     <div class="modal-header">
                         {!! Form::open(['route' => 'alumno.store', 'method'=>'post','validate']) !!}
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -178,9 +178,9 @@
 
                 <!-- Modal content-->
 
-                <div class="modal-content">
+                <div class="modal-content" style="margin: 200px 100px;">
                     <div class="modal-header">
-                      {!!   Form::open(['url' => 'alu']);!!}
+                        {!!   Form::open(['url' => 'alu']);!!}
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Buscar Alumno</h4>
                     </div>
@@ -199,6 +199,9 @@
         </div>
 
     </div>
+    @endsection('nab')
+    
+    @yield('form')
 
 </body>
 </html>

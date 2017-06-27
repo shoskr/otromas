@@ -22,6 +22,8 @@
                             <td>curso</td>
         <!--                    <td>Direccion</td>-->
                             <td>Telefono</td>
+                            <td></td>
+                            
                         </tr>
                         @foreach($alumno as $alum)
                         <td>{{$alum->rut}}</td>
@@ -30,6 +32,8 @@
                         <td>{{$alum->curso }}</td>
          <!--               <td>{{$alum->direccion}}</td>-->
                         <td>{{$alum->telefono}}</td>
+                        <td><a href="{{ route('libro/destroy',['id'=> $libro->id])}}">eliminar</a></td>
+                        
                         @endforeach
                     </table>
                     <div class="panel" style="text-align: right">                        

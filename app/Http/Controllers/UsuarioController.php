@@ -3,10 +3,8 @@
 namespace colegio\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use colegio\Usuario as Usuario;
 use colegio\Alumno_usuario as alumno;
-
 
 class UsuarioController extends Controller {
 
@@ -16,7 +14,6 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-       
         
     }
 
@@ -26,7 +23,7 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        
+
         return view('UTP');
     }
 
@@ -37,32 +34,26 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
+
         $usuario = new Usuario;
         $usuario->username = $request->username;
         $usuario->password = password_hash($request->password, PASSWORD_DEFAULT);
         $usuario->perfil = $request->perfil;
-        
 
-
-
-
+        $usuario->save();
         if ($request->perfil == 1) {
-
+            $usu = usuario::all()->last();
             $AlumUs = new alumno;
-            $usuario->id_usuario = $request->rut;
-            $usuario->save();
             $AlumUs->Alumno_rut = $request->rut;
-            $AlumUs->usuario_id_usuario = $request->rut;;
+            $AlumUs->usuario_id_usuario = $usu->id_usuario;
             $AlumUs->save();
             session_start();
-            return view('formUTP');   
+            return view('formUTP');
         } else {
-            $usuario->save();
-            
-            return redirect()->back();
+            session_start();
+            return view('formUTP');
         }
-        
-       
     }
 
     public function entrar(Request $request) {

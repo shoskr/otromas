@@ -66,8 +66,8 @@ class AlumnoController extends Controller {
         if ($al == $dv) {
             $alumno->save();
             session_start();
-            $_SESSION['user'] = $request->rut;
-            return \View::make('alumUs');
+            $_SESSION['rut'] = $request->rut;
+            return \View::make('alumUs', compact($_SESSION['rut']));
         } else {
             session_start();
             return \View::make('formUTP');
@@ -75,7 +75,7 @@ class AlumnoController extends Controller {
     }
 
     public function listAll() {
-        $alumno = Alumno::all();
+        $alumno = Alumno::all()->where('estado', '=', '1');
         session_start();
         return \View::make('listaAlumno', compact('alumno'));
     }
@@ -88,9 +88,10 @@ class AlumnoController extends Controller {
      */
     public function show(Request $request) {
 
-        $alumno = Alumno::where('rut', '=', $request->rut)->first();
+        $alum = Alumno::all()->where('rut', '=', $request->rut);
         session_start();
-        return \View::make('listaAlumno', $alumno);
+
+        return \View::make('consAlum', compact('alum'));
     }
 
     /**
@@ -100,7 +101,7 @@ class AlumnoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        
     }
 
     /**
@@ -121,7 +122,9 @@ class AlumnoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        $alumno = Alumno::find($id);
+        $alumno->delete();
+        return redirect()->back();
     }
 
 }

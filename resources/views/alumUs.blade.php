@@ -1,18 +1,14 @@
 @extends('formUTP')
 
 @section('content')
-
 <?php
-session_start();
-if (isset($_SESSION['user'])) {
-    $id = $_SESSION['user'];
-    
-    $idUs;
+
+if(isset($_SESSION['rut'])){
+    $rut = $_SESSION['rut'];
 }
 
+$rut;
 ?>
-
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -44,7 +40,8 @@ if (isset($_SESSION['user'])) {
                     <p>Contraseña      : <input type="password" name="password" value="" />  </p>
                                   
                         <input type="hidden" name="perfil" value="1">
-                        <input type="text" name="rut" value="<?php echo $id ?>">
+                        
+                        <input type="hidden" name="rut" value="<?php echo $rut?>">
                         
                         
                 
