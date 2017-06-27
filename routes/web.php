@@ -27,30 +27,40 @@ Route::get('utp', function () {
 Route::get('alumUs', function () {
     return view('alumUs');
 });
-Route::get('ConsAlum', function () {
-    return view('consultarAlumno');
-});
+
 Route::get('listaAlumno', function () {
     session_start();
     return view('listaAlumno');
 });
+Route::get('ListaProfesor', function () {
+    session_start();
+    return view('ListaProfesor');
+});
 
-
+//alumno
 Route::resource('alumno','AlumnoController');
 Route::get('alum','AlumnoController@listAll');
 Route::get('alum2','AlumnoController@listAll2');
 Route::get('alumno/show/{id}',['as'=>'alumno/show','uses'=>'AlumnoController@show']);
 Route::resource('alumno_usuario','Alumno_usuarioController');
-Route::resource('profesor','ProfesorController');
-Route::resource('tutoria','TutoriaController');
-Route::resource('usuario','UsuarioController');
-Route::resource('log','loginController');
 Route::post('alu', 'AlumnoController@show');
-
+Route::get('alumno/destroy/{id}',['as'=>'alumno/destroy','uses'=>'AlumnoController@destroy']);
+//usuario
+Route::resource('usuario','UsuarioController');
 Route::resource('usu', 'UsuarioController');
 Route::resource('us', 'UsuarioController');
+//otro
+Route::resource('log','loginController');
+Route::resource('tutoria','TutoriaController');
+//profesor
+Route::resource('profesor','ProfesorController');
+Route::get('pro','ProfesorController@listAll');
+Route::get('pro2','ProfesorController@listAll2');
+Route::post('prof', 'ProfesorController@show');
+Route::get('profesor/destroy/{id}',['as'=>'profesor/destroy','uses'=>'ProfesorController@destroy']);
 
-Route::get('alumno/destroy/{id}',['as'=>'alumno/destroy','uses'=>'AlumnoController@destroy']);
+
+
 
 
 
