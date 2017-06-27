@@ -51,13 +51,13 @@
                     <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Profesor<span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a data-toggle="modal" data-target="#SaveProfesor">Agregar Profesor</a></li>
-                        <li><a data-toggle="modal" data-target="#">Listar Profesores</a></li>
-                        <li><a data-toggle="modal" data-target="#">Consultar Profesores</a></li>
-                        <li><a data-toggle="modal" data-target="#">Despedir Profesores</a></li>
+                        <li><a data-toggle="modal" href="{{url('pro')}}">Listar Profesor</a></li>
+                        <li><a data-toggle="modal" data-target="#BuscarProfesor">Consultar Profesores</a></li>
+                        <li><a data-toggle="modal" href="{{url('pro2')}}">Despedir Profesores</a></li>
                     </ul>
                 </div>
                 <p></p>
-
+                <p></p>
                 <div class="dropdown">
                     <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Alumnos<span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -69,10 +69,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
 
         <!-- Modal -->
@@ -120,21 +116,56 @@
                 <!--  Modal content-->
                 <div class="modal-content" style="margin: 200px 100px;">
                     <div class="modal-header">
+                        {!! Form::open(['route' => 'profesor.store', 'method'=>'post','validate']) !!}
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title">Ingresar Alumno</h4>
                     </div>
-
-                    <table class="table tab-pane" style="text-align: center">
-                        <tr>
-                            <td> Nombre :</td>
-                            <td> <input type="text" name="nombre" value="" /> </td>
-                        </tr>
-                    </table>
-
+                    <div class="modal-body" style="text-align: center">
+                        <p> Rut                : <input type="number" name="rut" value="" placeholder="Ingresar rut sin puntos" required>-<input required type="text" name="dv" value="" size="1" placeholder="DV"/> </p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Nombre Completo    : <input type="text" name="nombre" value="" placeholder="Ingresar Nombre" required/></p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Fecha contratacion   : <input type="date" name="fechac" value="" max=""required size="7"/></p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Asignatura              : <input type="text" name="asignatura" value="" placeholder="Ingresar curso"required /></p>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Valor Tutoria          : <input type="text" name="valor" value="" placeholder="Ingresar Direccion" required/></p>
+                    </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Guardar" />
                     </div>
+                    {!!form::close() !!}
+
+                </div>
+
+            </div>
+        </div>
+        <!--Profesor-->
+        <div class="modal fade" id="BuscarProfesor" role="dialog">
+            <div class="modal-dialog">
+
+                <!--Modal content-->
+
+                <div class="modal-content" style="margin: 200px 100px;">
+                    <div class="modal-header">
+                        {!!   Form::open(['url' => 'prof']);!!}
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Buscar Profesor</h4>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        <p> Rut                : <input type="number" name="rut" value="" placeholder="Ingresar rut sin puntos ni digito verificado" required> </p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Consultar" />
+
+                    </div>
+                    {!! Form::close() !!}
+
                 </div>
 
             </div>
