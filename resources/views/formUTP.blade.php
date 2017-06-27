@@ -90,7 +90,7 @@
                         <p>Tipo De Usuario : 
                             <select name="perfil">
                                 <option>Seleccionar Tipo</option>
-                                <option value="2">Profesor</option>
+                                <option value="2">Secretaria</option>
                                 <option value="3">UTP</option>
                                 <option value="4">Director</option>
                             </select> 

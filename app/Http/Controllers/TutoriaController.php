@@ -3,7 +3,8 @@
 namespace colegio\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use colegio\Alumno as Alumno;
+use colegio\Profesor as Profesor;
 class TutoriaController extends Controller
 {
     /**
@@ -13,7 +14,9 @@ class TutoriaController extends Controller
      */
     public function index()
     {
-        //
+         $profesor = Profesor::all();
+         $Alumno = Alumno::all();
+        return view('formSecretaria', compact('profesor'), compact(Alumno));
     }
 
     /**

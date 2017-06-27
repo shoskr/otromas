@@ -35,8 +35,7 @@ class loginController extends Controller {
                 case 2:
                     session_start();
                     $_SESSION['user'] = $user;
-
-                    break;
+                    return \View::make('secre');            
                 case 3:
                     session_start();
                     $_SESSION['user'] = $user;

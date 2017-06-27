@@ -34,6 +34,10 @@ Route::get('listaAlumno', function () {
     session_start();
     return view('listaAlumno');
 });
+Route::get('secre', function () {
+    session_start();
+    return view('formSecretaria');
+});
 
 
 Route::resource('alumno','AlumnoController');
@@ -46,6 +50,9 @@ Route::resource('tutoria','TutoriaController');
 Route::resource('usuario','UsuarioController');
 Route::resource('log','loginController');
 Route::post('alu', 'AlumnoController@show');
+
+Route::get('Tuto', ['as' => 'Tuto', 'uses' => 'TutoriaController@index']);
+//Route::get('Tuto', 'TutoriaController@index');
 
 Route::resource('usu', 'UsuarioController');
 Route::resource('us', 'UsuarioController');
