@@ -49,8 +49,11 @@ Route::post('alu', 'AlumnoController@show');
 
 Route::resource('usu', 'UsuarioController');
 Route::resource('us', 'UsuarioController');
-
+Route::get('usu','UsuarioController@listAll');
+Route::get('usu2','UsuarioController@listAll2');
+Route::post('usu1','UsuarioController@show');
 Route::get('alumno/destroy/{id}',['as'=>'alumno/destroy','uses'=>'AlumnoController@destroy']);
+Route::get('usuario/destroy/{id}',['as'=>'usuario/destroy','uses'=>'UsuarioController@destroy']);
 
 
 

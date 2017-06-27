@@ -37,6 +37,7 @@
                         <td>Telefono :</td>
                         <td>{{$alu->telefono}}</td>
                     </tr>
+                    
                     @endforeach
                 </table>
             </div>
