@@ -37,8 +37,10 @@
                         <td>Telefono :</td>
                         <td>{{$alu->telefono}}</td>
                     </tr>
+                    
                     @endforeach
                 </table>
+                <a style="text-align: right"href="{{'utp'}}">volver</a>
             </div>
         </div>
        

@@ -70,6 +70,8 @@ class AlumnoController extends Controller {
             $_SESSION['rut'] = $request->rut;
             return \View::make('alumUs', compact($_SESSION['rut']));
         } else {
+            
+            Session::flash('flash_message', 'DV erroneao');
             session_start();
             return \View::make('formUTP');
         }

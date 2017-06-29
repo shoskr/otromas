@@ -66,8 +66,23 @@ class UsuarioController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function listAll() {
+        $Usua = Usuario::all();
+        session_start();
+        return \View::make('listUs', compact('Usua'));
+    }
 
+    public function listAll2() {
+        $Usua = Usuario::all();
+        session_start();
+        return \View::make('elimUs', compact('Usua'));
+    }
+
+    public function show(Request $request) {
+        $Usua = Usuario::all()->where('username', '=', $request->rut);
+        session_start();
+
+        return \View::make('listUs', compact('Usua'));
 //
     }
 
@@ -99,7 +114,11 @@ class UsuarioController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-//
+        
+        $alumno = Usuario::where('id_usuario', $id);
+        $alumno->delete();
+        session_start();
+        return redirect()->back();
     }
 
 }
