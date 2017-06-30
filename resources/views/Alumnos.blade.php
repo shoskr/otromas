@@ -8,11 +8,11 @@
     <body>
         
         <div class="row" style="border: #0000cc; margin: 30px 40px" >      
-            <div class="col-lg-10 ">
+            <div class="col-lg-10 alert alert-danger">
                 <div class="panel">
                     <div class="panel alert-danger">
 
-                        <h3 style="text-align: center"><p>Listado de tutorias agendadas</p></h3>
+                        <h3 style="text-align: center"><p>Tienes Tutorias en los proximos dias</p></h3>
                     </div>
                     <table class="table table-hover" style="background-color: white ">
                         <tr>

@@ -78,5 +78,6 @@ session_destroy();
                 </ul>
             </div>
             @endsection('menu')
+            
     </body>
 </html>

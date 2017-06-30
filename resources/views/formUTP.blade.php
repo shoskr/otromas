@@ -19,9 +19,7 @@
         </div>
         @endsection('menu')
 
-        @if(Session::has('flash_message'))
-        {{Session::get('flash_message')}}
-        @endif
+       
 
 
 
@@ -30,13 +28,13 @@
             <!-- Trigger the modal with a button -->
             @section('nab')
             <?php
-           
             if (isset($_SESSION['user'])) {
                 echo '<font size="5" color="white" ><b> Usuario:  ' . $_SESSION['user'] . '</b></font>';
             }
-            $tipo = $_SESSION['tipo']; 
+            $tipo = $_SESSION['tipo'];
+            $id = $_SESSION['rut'];
             ?>
-<!--            formulario UTP-->
+            <!--            formulario UTP-->
             @if($tipo == 3)
             <div class="btn-group-vertical ">
                 <div class="dropdown">
@@ -71,14 +69,14 @@
                     </ul>
                 </div>
             </div>
-            
+
             @endif
-            
-<!--            formulario secretaria-->
-            
+
+            <!--            formulario secretaria-->
+
             @if($tipo == 2)
             <div class="btn-group-vertical ">
-               
+
                 <div class="dropdown">
                     <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Profesor<span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -93,7 +91,7 @@
                     <ul class="dropdown-menu">
                         <li><a data-toggle="modal" href="{{url('alum')}}">Listar Alumnos</a></li>
                         <li><a data-toggle="modal" data-target="#BuscarAlumno">Consultar Alumnos</a></li>
-                       
+
                     </ul>
                 </div>
                 <p></p>
@@ -101,35 +99,30 @@
                     <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Tutorias<span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a data-toggle="modal" href="{{url('Tuto')}}">Agendar Tutorias</a></li>
-                        <li><a data-toggle="modal" href="{{url('tut')}}">Manipular Tutorias</a></li>
-                        
-                       
-                    </ul>
-                </div>
-            </div>
-            @endif
-            
-            <!-- formulario Alumno-->
-            
-            @if($tipo == 1)
-             <div class="btn-group-vertical ">
-                <div class="dropdown">
-                    <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Usuario<span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a data-toggle="modal" data-target="#SaveUser">Agregar Usuario</a></li>
-                        <li><a data-toggle="modal" href="{{url('usu')}}">Listar Usuario</a></li>
-                        <li><a data-toggle="modal" data-target="#BuscarUsuario">Consultar Usuarios</a></li>
-                        <li><a data-toggle="modal" href="{{url('usu2')}}">Eliminar Usuarios</a></li>
-                    </ul>
-                </div>
-                <p></p>
+                        <li><a data-toggle="modal" href="{{url('tut')}}">Listar Tutorias</a></li>
+                        <li><a data-toggle="modal" href="{{url('tuto1')}}">Modifica Estado Tutorias</a></li>
 
+
+                    </ul>
+                </div>
             </div>
             @endif
-             <!-- formulario director-->
+
+            <!-- formulario Alumno-->
+
+            @if($tipo == 1)
+            <div class="dropdown">
+                <button class="btn btn-info btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Tutorias<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a data-toggle="modal" href="{{ route('tut/listAll2',['id'=> $id])}}">Ver Tutorias</a></li>
+                    |<li><a data-toggle="modal" href="{{url('alum')}}">Consultar Tutorias</a></li>
+                </ul>
+            </div>
+            @endif
+            <!-- formulario director-->
             @if($tipo == 4)
             @endif
-            
+
         </div>
 
 

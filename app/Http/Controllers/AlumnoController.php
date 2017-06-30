@@ -16,7 +16,9 @@ class AlumnoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        
+        
+        
     }
 
     /**
@@ -78,12 +80,12 @@ class AlumnoController extends Controller {
     }
 
     public function listAll() {
-        $alumno = Alumno::all()->where('estado', '=', '1');
+        $alumno = Alumno::all();
         session_start();
         return \View::make('listaAlumno', compact('alumno'));
     }
     public function listAll2() {
-        $alumno = Alumno::all()->where('estado', '=', '1');
+        $alumno = Alumno::all();
         session_start();
         return \View::make('elimAlum', compact('alumno'));
     }

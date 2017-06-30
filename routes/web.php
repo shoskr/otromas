@@ -47,7 +47,10 @@ Route::get('Alfrom', function () {
     session_start();
     return view('Alum');
 });
-
+Route::get('TutoAct', function () {
+    session_start();
+    return view('MostrarTu');
+});
 
 
 
@@ -73,10 +76,11 @@ Route::get('Tuto', ['as' => 'Tuto', 'uses' => 'TutoriaController@index']);
 
 Route::resource('usu', 'UsuarioController');
 Route::resource('us', 'UsuarioController');
+Route::resource('us', 'UsuarioController@');
 
 //otro
 Route::resource('log','loginController');
-Route::resource('tutoria','TutoriaController');
+//Route::resource('tutoria','TutoriaController');
 //profesor
 Route::resource('profesor','ProfesorController');
 Route::get('pro','ProfesorController@listAll');
@@ -95,11 +99,12 @@ Route::get('usuario/destroy/{id}', ['as' => 'usuario/destroy', 'uses' => 'Usuari
 
 
 Route::resource('tuto', 'TutoriaController');
+Route::resource('tut1', 'TutoriaController@show');
 
-
+Route::resource('Alumno', 'AlumnoController');
 Route::get('tut', 'TutoriaController@listAll');
+Route::get('tut/listAll2/{id}', ['as' => 'tut/listAll2', 'uses' => 'TutoriaController@listAll2']);
 
-Route::post('tutoria/update/{id} ', ['as' => 'tutoria/update', 'uses' => 'TutoriaController@update']);
 
 
 

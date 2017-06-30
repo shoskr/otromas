@@ -20,6 +20,7 @@ class TutoriaController extends Controller {
         session_start();
         return view('agregarTuto', compact('Profesor'), compact('Alumno'));
     }
+  
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +28,9 @@ class TutoriaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        //
+        $tuto = Tutoria::all();
+        session_start();
+        return view('VerTuto', compact('tuto'));
     }
 
     /**
@@ -45,7 +48,7 @@ class TutoriaController extends Controller {
         $tutoria->Profesor_rut = $request->profesor;
         $tutoria->save();
         session_start();
-        return \View::make('formSecretaria');
+        return \View::make('formUTP');
     }
 
     public function listAll() {
@@ -53,7 +56,12 @@ class TutoriaController extends Controller {
         session_start();
         return \View::make('listTuto', compact('Tuto'));
     }
-
+    
+public function listAll2($id) {
+        $Tuto = Tutoria::all()->where('Alumno_rut',$id);
+        session_start();
+        return \View::make('listTuto', compact('Tuto'));
+    }
     /**
      * Display the specified resource.
      *
@@ -61,7 +69,11 @@ class TutoriaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+     echo $id;
+        
+        //$Tutoria = Tutoria::all()->where('id_tutoria', $id);
+        //session_start();
+        //return \View::make('MostrarTu', compact($Tutoria));
     }
 
     /**
@@ -71,6 +83,9 @@ class TutoriaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        $Tutoria = Tutoria::all()->where('id_tutoria', $id);
+        session_start();
+        return View('TutoAct');
         //
     }
 
@@ -82,16 +97,16 @@ class TutoriaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        
-        $Tutoria = Tutoria::where('id_tutoria',$id);
+
+        $Tutoria = Tutoria::where('id_tutoria', $id);
         $Tutoria->estado = $request->est;
         $Tutoria->update();
         session_start();
         return redirect()->back();
-        
-        
-        
-        
+
+
+
+
         //
     }
 
